@@ -18,19 +18,21 @@ const legalResponses = {
 const classifier = new natural.BayesClassifier();
 
 // Train the classifier with sample legal intents
+// common questions
 classifier.addDocument('en','What are my legal rights?', 'legal_rights');
 classifier.addDocument('How can I get legal help?', 'legal_help');
 classifier.addDocument('Tell me about legal contracts.', 'legal_contracts');
 classifier.addDocument('What is the process for filing a lawsuit?', 'file_lawsuit');
 classifier.addDocument('what is your name', 'jytfs');
 classifier.addDocument('unn peru enna', 'tamil');
+classifier.addDocument('hi, hii, hello, hey', 'greetings')
 
 // language ==== English 
-
 classifier.addDocument('neighbour dog bite me what can i do', 'article_1');
 
 // language ==== Tamil
 classifier.addDocument('Pakkattu vittuu nay ennai katittatu naan enna ceyya ventum', 'article_1_tamil');
+
 // language ==== Hindi
 classifier.addDocument('padosee kute ne mujhe kaat liya, main kya karoon?', 'article_1_hindi');
 
@@ -39,10 +41,11 @@ classifier.addDocument('padosee kute ne mujhe kaat liya, main kya karoon?', 'art
 // classifier training
 classifier.train();
 
-
-// classifier.train().then(async()=>{
-//   classifier.save();
-// })
+classifier.save('train.json', function (err, classifier) {
+  if (err) {
+    console.log(err)
+  }
+})
 
 
 app.get('/', (req, res) => {
@@ -60,6 +63,9 @@ app.post('/chat', (req, res) => {
   switch (intent) {
     case 'legal_rights':
       botResponse = 'welcome to the legal rights....';
+      break;
+    case 'greetings':
+      botResponse = ['Hello there!'];
       break;
     case 'legal_help':
       botResponse = 'You can seek legal help by...';
