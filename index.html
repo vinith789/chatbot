@@ -4,55 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Legal Chatbot with NLP</title>
-  <style>
-  body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(to bottom, #175d69 23%, #330c43 95%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-#chat-container {
-  /* max-width: 400px; */
-  border: 1px solid #ccc;
-  width: 700px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-#chat-messages {
-  padding: 10px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 20px;
-  overflow-y: scroll;
-  height: 300px;
-  background-color: #fff;
-  color: rgb(24, 30, 30);
-}
-.header{
-  display: flex;
-  justify-content: center; 
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-  border-radius: 15px;
-  background-color: azure;
-  padding: 10px;
-}
-#user-input {
-  width: 100%;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 20px;
-  padding: 10px;
-  border: none;
-  border-top: 10px;
-  box-sizing: border-box;
-}
-
-</style>
+  <title>Legal Chatbot</title>
+  <link rel ="stylesheet" type ="text/css" href ="style.css" />
 </head>
 
 <body>
@@ -64,59 +17,7 @@
     </div>
   </div>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-  const chatMessages = document.getElementById('chat-messages');
-  const userInput = document.getElementById('user-input');
-
-  function sendMessage(message, sender) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', sender);
-    messageDiv.innerHTML = `<p>${message}</p>`;
-    chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  // function userMsg(){
-  //   const messageDiv = document.createElement('div');
-  //   const message = userInput.value;
-  //   if(message.length > 0){
-  //     sendMessage(message, 'user');
-  //     userInput.value = '';
-  //   }
-  // }
-
-  function processUserInput() {
-    const userMessage = userInput.value.trim();
-    if (userMessage !== '') {
-      sendMessage(userMessage, 'user');
-
-      // Send user message to the server
-      fetch('/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `message=${encodeURIComponent(userMessage)}`
-      })
-        .then(response => response.json())
-        .then(data => {
-          sendMessage(data.botResponse, 'bot');
-        })
-        .catch(error => console.error('Error:', error));
-
-      userInput.value = '';
-    }
-  }
-
-  userInput.addEventListener('keyup', function (event) {
-    if (event.key === 'Enter') {
-      processUserInput();
-    }
-  });
-  });
-
-  </script>
+  <script src="script.js"></script>
   
 </body>
 

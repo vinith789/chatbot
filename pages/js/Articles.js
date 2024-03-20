@@ -2347,9 +2347,9 @@ function check(){
     {
       if(elem.title==data)
       {
-       var article_data=(elem)
-       document.getElementById("title").innerHTML = article_data.title
-       document.getElementById("description").innerHTML = article_data.description
+        var article_data=(elem)
+        document.getElementById("title").innerHTML = article_data.title
+        document.getElementById("description").innerHTML = article_data.description
       }
     }
   }
