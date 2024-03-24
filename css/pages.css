@@ -24,8 +24,10 @@ body {
 .navbar {
   display: flex;
   align-items: center;
+  overflow: hidden;
   justify-content: space-between;
   max-width: 1200px;
+  position: sticky;
   margin: 0 auto;
   padding: 20px 15px;
 }

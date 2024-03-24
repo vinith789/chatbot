@@ -23,7 +23,7 @@ require("../common/head.php");
             <select id="select" style=" font-size: 12px; height:35px; width: 100px; margin:10px; border-radius:5px;" >
               <option value="section">Section</option>
               <option value="section_title">Section-Title</option>
-            </select> 
+            </select>
               <input class="form-control mr-sm-2" id="text" type="search" placeholder="Search" aria-label="Search" style="font-size:13px;">
               <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="check()">Search</button>
           </form>
@@ -31,8 +31,8 @@ require("../common/head.php");
         <!--SearchBar End-->
       </nav>
     </header>
-    
-        <?php 
+
+        <?php
         $set_model_title = "MVA";
         require("../common/popup.html");
         ?>
