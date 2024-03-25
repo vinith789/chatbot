@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
     messageDiv.classList.add('message', sender);
     if(sender === "user")
     {
-      messageDiv.innerHTML = `<div style="background: rgba(0,0,0,0.1); padding: 10px; border-radius: 10px; margin-top: 4px;">
-                                <p style="text-align: right; margin-left: 10px;">
+      messageDiv.innerHTML = `<div style="background-color: #A9A9A9; padding: 10px; border-radius: 10px; margin-top: 4px;">
+                                <p style="text-align: right; margin-left: 10px; color:white;">
                                   ${message}
                                 </p>
                               </div>`;
@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', function () {
     else
     {
       timeOut();
-      messageDiv.innerHTML = `<div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px; margin-top: 4px;">
+      messageDiv.innerHTML = `<div style="background-color:  #9ACD32; color:white; padding: 10px; border-radius: 10px; margin-top: 4px;">
                                 <p style="text-align: left; margin-right: 10px; ">
                                   ${message}
                                 </p>
                               </div>`;
     }
-    
+
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }

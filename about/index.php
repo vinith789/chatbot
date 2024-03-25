@@ -36,22 +36,19 @@
     />
   </head>
   <body>
+    <div class="full-body" style="background: linear-gradient(to bottom, #175d69 23%, #330c43 95%);" >
         <!--NavBar Start-->
     <header class="header">
       <nav class="navbar">
-      <?php require("../common/header.php"); ?>
           <!--Profile Content-->
           <div class="buttons">
-            <div class="right-links">
-                <?php require("../common/validation.php") ?>
-                <a href="../php/logout.php"> <button type="button" class="btn btn-danger" style="font-size: 12px; height:35px; width: 100px; margin:10px; border-radius:5px;">Log Out</button> </a>
-            </div>
+
           </div>
           <!--Profile Content End-->
       </nav>
     </header>
     <!--NavBar End-->
-  <div class="body"   style="background: linear-gradient(to bottom, #175d69 23%, #330c43 95%) ;" >
+  <div class="body"   >
     <section class="container"  >
       <div class="testimonial mySwiper">
         <div class="testi-content swiper-wrapper">
@@ -113,28 +110,30 @@
         <input type="submit" class="btn btn-primary"  value="Submit">
       </form>
     </div>
-    <div class="col-sm-6 ">
-      <?php
-        $conn = mysqli_connect("localhost","root","","tutorial");
-        if($conn-> connect_error){
-          die("Connection failed: ". $conn-> connect_error);
-        }
-        $sql = "SELECT name , feedback, days FROM feedback";
-        $result = $conn-> query($sql);
+    <div class="col-sm-6 " style="height:250px; overflow-y: scroll;">
+      <h1 style="color:white;">Feedback</h1>
+        <?php
+          $conn = mysqli_connect("localhost","root","","tutorial");
+          if($conn-> connect_error){
+            die("Connection failed: ". $conn-> connect_error);
+          }
+          $sql = "SELECT name , feedback, days FROM feedback";
+          $result = $conn-> query($sql);
 
-        if($result-> num_rows > 0){
-          while($row = $result-> fetch_assoc()){
-            echo "<div style='height:100px;'><div><h1 style='color:white'>".$row["name"]."</h1><div><p style='color:white'>".$row["feedback"]."</p></div><div><h4 style='color:white'>".$row["days"]."</h4></div> </div>";
+          if($result-> num_rows > 0){
+            while($row = $result-> fetch_assoc()){
+              echo "<h5 style='color:white'>".$row["name"]."</h5><p style='color:white'>".$row["feedback"]."</p><p style='color:white'>".$row["days"]."</p><hr class='hr'>";
+          }
+          echo"</div>";
         }
-      }
-      else{
-        echo "0 result";
-      }
-      $conn-> close();
-      ?>
+        else{
+          echo "0 result";
+        }
+        $conn-> close();
+        ?>
     </div>
   </div>
-
+  </div>
     <!-- Swiper JS -->
     <script src="js/swiper-bundle.min.js"></script>
 
